@@ -86,6 +86,7 @@ terraform apply
 ```
 
 ## Inputs
+## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
@@ -93,8 +94,10 @@ terraform apply
 | github\_token | GitHub Token | string | n/a | yes |
 | repository\_name | GitHub Repositories owner | string | n/a | yes |
 | action | Whether to create or update a repository. (pass update once create the repository) | string | `"create"` | no |
+| branch\_protection | Set a basic protection for Master branch | string | `"basic"` | no |
 | create | Curl's method | string | `"POST"` | no |
 | enforce\_admins | Required. Enforce all configured restrictions for administrators. Set to true to enforce required status checks for repository administrators. Set to null to disable. | string | `"false"` | no |
+| github\_endpoint | GitHub API endpoint | string | `"https://api.github.com"` | no |
 | repository\_allow\_merge\_commit | Either true to allow merging pull requests with a merge commit, or false to prevent merging pull requests with merge commits. Default: true | string | `"true"` | no |
 | repository\_allow\_rebase\_merge | Either true to allow rebase-merging pull requests, or false to prevent rebase-merging. Default: true | string | `"true"` | no |
 | repository\_allow\_squash\_merge | Either true to allow squash-merging pull requests, or false to prevent squash-merging. Default: true | string | `"true"` | no |
@@ -118,6 +121,8 @@ terraform apply
 
 * 0.0.1
     * First release
+* 0.0.2
+    * FIX: Basic master branch protection.
 
 
 ## Contributing
