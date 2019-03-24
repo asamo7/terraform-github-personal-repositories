@@ -61,8 +61,7 @@ variable "github_owner" {}
 variable "github_token" {}
 
 module "repo-1" {
-  source                        = "github.com/p0bailey/terraform-github-personal-repositories
-"
+  source                        = "github.com/p0bailey/terraform-github-personal-repositories"
   github_owner                  = "${var.github_owner}"
   github_token                  = "${var.github_token}"
   repository_name               = "my-new-repository"
