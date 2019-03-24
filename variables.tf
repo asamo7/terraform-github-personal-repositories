@@ -97,7 +97,7 @@ variable "required_status_checks_contexts" {
 
 variable "enforce_admins" {
   description = "Required. Enforce all configured restrictions for administrators. Set to true to enforce required status checks for repository administrators. Set to null to disable."
-  default     = "true"
+  default     = "false"
 }
 
 variable "required_approving_review_count" {
