@@ -1,3 +1,13 @@
+variable "github_endpoint" {
+  description = "GitHub API endpoint"
+  default     = "https://api.github.com"
+}
+
+variable "branch_protection" {
+  description = "Set a basic protection for Master branch"
+  default     = "basic"
+}
+
 variable "github_owner" {
   description = "GitHub Repositories owner"
 }
