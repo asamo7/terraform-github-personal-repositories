@@ -58,6 +58,32 @@ github_token = "xyzxyzxyzxyzxyzxyzxyzxyzxyzxyzxyz"
 
 ## Usage
 
+terraform file
+```
+variable "github_owner" {}
+
+variable "github_token" {}
+
+module "repo-1" {
+  source                        = "github.com/p0bailey/terraform-github-personal-repositories
+"
+  github_owner                  = "${var.github_owner}"
+  github_token                  = "${var.github_token}"
+  repository_name               = "my-new-repository"
+  repository_description        = "My new Awesome project."
+  repository_private            = "false"
+  repository_gitignore_template = "Terraform"
+  topics                        = ["terraform", "github"]
+
+  action = "update"
+}
+```
+Run
+```
+terraform init
+terraform plan
+terraform apply
+```
 
 ## Inputs
 
