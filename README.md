@@ -70,7 +70,7 @@ module "repo-1" {
   repository_gitignore_template = "Terraform"
   topics                        = ["terraform", "github"]
 
-  action = "update"
+  #action = "update"
 }
 ```
 Run
