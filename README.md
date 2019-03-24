@@ -27,11 +27,7 @@ few open issues and a PR (see links below) open for such feature and hopefully w
 create and manage GitHub personal repositories with few sensible security defaults as:
 
 
-* "master branch protection"
-
-* "required_pull_request_reviews"
-
-* "required_approving_review_count"
+* "Basic master branch protection"
 
 
 GitHub Provider issues and open pull requests.
@@ -85,7 +81,6 @@ terraform plan
 terraform apply
 ```
 
-## Inputs
 ## Inputs
 
 | Name | Description | Type | Default | Required |
