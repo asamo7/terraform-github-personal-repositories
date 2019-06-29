@@ -15,19 +15,21 @@ resource "null_resource" "one" {
   provisioner "local-exec" {
     command = <<EOT
     curl ${var.action == "create" ? var.create : var.update} -H "Authorization: token ${var.github_token}" \
-    -d '{"name": "${var.repository_name}",
-    "description": "${var.repository_description}",
-    "homepage": "${var.repository_homepage}",
-    "private": "${var.repository_private}",
-    "has_issues": "${var.repository_has_issues}",
-    "has_projects": "${var.repository_has_projects}",
-    "has_wiki": "${var.repository_has_wiki}",
-    "auto_init": "${var.repository_auto_init}",
-    "gitignore_template": "${var.repository_gitignore_template}",
-    "license_template": "${var.repository_license_template}",
-    "allow_squash_merge": "${var.repository_allow_squash_merge}",
-    "allow_merge_commit": "${var.repository_allow_merge_commit}",
-    "allow_rebase_merge": "${var.repository_allow_rebase_merge}"}' \
+    -d '{
+      "name":               "${var.repository_name}",
+      "description":        "${var.repository_description}",
+      "homepage":           "${var.repository_homepage}",
+      "private":            "${var.repository_private}",
+      "has_issues":         "${var.repository_has_issues}",
+      "has_projects":       "${var.repository_has_projects}",
+      "has_wiki":           "${var.repository_has_wiki}",
+      "auto_init":          "${var.repository_auto_init}",
+      "gitignore_template": "${var.repository_gitignore_template}",
+      "license_template":   "${var.repository_license_template}",
+      "allow_squash_merge": "${var.repository_allow_squash_merge}",
+      "allow_merge_commit": "${var.repository_allow_merge_commit}",
+      "allow_rebase_merge": "${var.repository_allow_rebase_merge}"
+    }' \
     ${var.action == "create" ? local.create : local.update}
 
     curl -i -X PUT -H "Authorization: token ${var.github_token}" -H "Accept: application/vnd.github.mercy-preview+json" \
