@@ -8,7 +8,7 @@ locals {
 }
 
 resource "null_resource" "one" {
-  triggers {
+  triggers = {
     key = "${uuid()}"
   }
 
