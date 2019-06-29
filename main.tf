@@ -7,7 +7,7 @@ locals {
   advanced_branch_protection = "null"
 }
 
-resource "null_resource" "1" {
+resource "null_resource" "one" {
   triggers {
     key = "${uuid()}"
   }
