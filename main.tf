@@ -32,16 +32,26 @@ resource "null_resource" "one" {
     }' \
     ${var.action == "create" ? local.create : local.update}
 
-    curl -i -X PUT -H "Authorization: token ${var.github_token}" -H "Accept: application/vnd.github.mercy-preview+json" \
-    -d '{ "names":  ${jsonencode(var.topics)}  }' \
-    https://api.github.com/repos/${var.github_owner}/${var.repository_name}/topics
+    curl -s \
+      -X PUT \
+      -H "Authorization: token ${var.github_token}" \
+      -H "Accept: application/vnd.github.mercy-preview+json" \
+      -d '{
+        "names":  ${jsonencode(var.topics)}
+        }' \
+      https://api.github.com/repos/${var.github_owner}/${var.repository_name}/topics
 
-    curl -i -X PUT -H "Authorization: token ${var.github_token}"  -H "Accept: application/vnd.github.luke-cage-preview+json" \
-    -d '{ "required_status_checks":${var.branch_protection == "basic" ? local.basic_branch_protection : local.advanced_branch_protection},
-    "enforce_admins":${var.branch_protection == "basic" ? local.basic_branch_protection :  local.advanced_branch_protection},
-    "required_pull_request_reviews":${var.branch_protection == "basic" ? local.basic_branch_protection :  local.advanced_branch_protection},
-    "restrictions":null}' \
-    https://api.github.com/repos/${var.github_owner}/${var.repository_name}/branches/master/protection
+    curl -s \
+      -X PUT \
+      -H "Authorization: token ${var.github_token}" \
+      -H "Accept: application/vnd.github.luke-cage-preview+json" \
+      -d '{
+        "required_status_checks":${var.branch_protection == "basic" ? local.basic_branch_protection : local.advanced_branch_protection},
+        "enforce_admins":${var.branch_protection == "basic" ? local.basic_branch_protection :  local.advanced_branch_protection},
+        "required_pull_request_reviews":${var.branch_protection == "basic" ? local.basic_branch_protection :  local.advanced_branch_protection},
+        "restrictions":null
+        }' \
+      https://api.github.com/repos/${var.github_owner}/${var.repository_name}/branches/master/protection
 
 
     EOT
